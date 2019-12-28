@@ -9,6 +9,18 @@ using System.Web;
 using System.Linq;
 using System.Web.Hosting;
 using System.IO;
+using System.Collections.Concurrent;
+
+public class oProduct
+{
+    public string Domain { set; get; }
+    public string Key { set; get; }
+    public string[] Images { set; get; }
+    public string Title { set; get; }
+    public string Price { set; get; }
+    public string Description { set; get; }
+    public string Content { set; get; }
+}
 
 public class global : System.Web.HttpApplication
 {
@@ -17,6 +29,9 @@ public class global : System.Web.HttpApplication
         //this.BeginRequest += page.OnBeginRequest;
     }
 
+    const string _ROOT_PRODUCTS = @"custom\products";
+    static ConcurrentDictionary<string, oProduct> _STORE = new ConcurrentDictionary<string, oProduct>() { };
+
     protected void Application_BeginRequest(Object sender, EventArgs e)
     {
         string url = Request.Path.ToLower(), domain, file, text;
@@ -24,28 +39,24 @@ public class global : System.Web.HttpApplication
         {
             case "/":
                 domain = Request.Url.Host;
-                //Context.RewritePath("/index.html");
-
-                //Context.Response.StatusCode = 200;
-                ////Context.Response.Status = "";
-
-                //Response.Write("LAST END: ");
-                //Response.Write(" END COUNT: ");
-
-                //var httpApplication = sender as HttpApplication;
-                //httpApplication.CompleteRequest();
-
-                file = Path.Combine(Server.MapPath("~/"), domain, "index.html");
-                if (File.Exists(file))
+                if (domain == "onghutvn.com" || domain == "iot.vn")
                 {
-                    text = File.ReadAllText(file);
+                    file = Path.Combine(Server.MapPath("~/"), domain, "index.html");
+                    if (File.Exists(file))
+                    {
+                        text = File.ReadAllText(file);
+                        text = text.Replace("___DOMAIN", domain);
 
-                    HttpResponse response = base.Response;
-                    response.ContentType = "text/html";
-                    response.Write(text);
-                    base.CompleteRequest();
+                        HttpResponse response = base.Response;
+                        response.ContentType = "text/html";
+                        response.Write(text);
+                        base.CompleteRequest();
+                    }
                 }
-
+                else
+                {
+                    Context.RewritePath("/index.html");
+                }
                 break;
             case "/admin":
             case "/admin/":

@@ -1,0 +1,12 @@
+﻿<div id="menu" class="main-menu">
+    <div class="nav-responsive"><span>Chuyên mục</span><div class="expandable"></div></div>
+
+    <ul class="nav navbar-nav">
+        <li class="top_level home"><a href="../">Trang chủ</a></li>
+        {{#each articles }}
+        <li class="top_level"><a href="{{#url Title}}">{{Title}}</a></li>
+        {{/each}}
+        <li class="head-links"><a href="lien-he">Liên hệ</a></li>
+    </ul>
+
+</div>

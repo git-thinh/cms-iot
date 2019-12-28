@@ -1,0 +1,22 @@
+﻿
+<div class="main-slider">
+    <div id="spinner"></div>
+    <div class="swiper-viewport">
+        <div id="slideshow0" class="swiper-container" style="opacity: 1;">
+            <div class="swiper-wrapper">
+                {{#each articles  ^ ImageBanner != null && ImageBanner.Length > 0 && Tags != null && string.Join(";", Tags).IndexOf("banner") != -1 }}
+                <div class="swiper-slide text-center">
+                    <a href="../{{Key}}" alt="{{Title}}">
+                        <img src="{{ImageBanner}}" alt="{{Title}}" class="img-responsive" />
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="swiper-pagination slideshow0"></div>
+        <div class="swiper-pager">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>

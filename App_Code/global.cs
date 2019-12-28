@@ -128,7 +128,7 @@ public class global : System.Web.HttpApplication
     {
         string url = Request.Path.ToLower(),
             domain = Request.Url.Host,
-            root = Path.Combine(Server.MapPath("~/"), domain),
+            root = Path.Combine(Server.MapPath("~/"), domain + "\\"),
             file, path, text;
         switch (url)
         {
@@ -210,8 +210,9 @@ public class global : System.Web.HttpApplication
                                 o.Tags = lines[1].Split(';');
                                 o.Title = lines[2];
 
-                                string[] imgs = Directory.GetFiles(dirs[i], "*.jpg").Select(x => x.Replace(root, string.Empty).Replace("\\", "/")).ToArray();
-                                if (o.Images.Length > 0)
+                                string[] imgs = Directory.GetFiles(dirs[i], "*.jpg")
+                                    .Select(x => x.Replace(root, string.Empty).Replace("\\", "/").ToLower()).ToArray();
+                                if (imgs.Length > 0)
                                 {
                                     o.ImageThumb = imgs.Where(x => x.Contains("thumb")).SingleOrDefault();
                                     o.ImageBanner = imgs.Where(x => x.Contains("banner")).SingleOrDefault();

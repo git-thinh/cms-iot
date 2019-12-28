@@ -1,6 +1,6 @@
 Ống hút
-menu_main;banner;hot
-Ống hút cỏ bàng
+banner;hot
+Ống hút khác
 
 3000
 Độ dài: 20cm (hoặc tuỳ chỉnh theo yêu cầu khách hàng không quá 28cm) 

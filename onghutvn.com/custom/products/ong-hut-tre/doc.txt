@@ -1,6 +1,8 @@
+Ống hút
+menu_main;banner;hot
 Ống hút tre
-1000
 
+1000
 Độ dài: 20cm
 - Cỡ ống: đường kính trong 5-12mm 
 - Phần đầu mút của ống hút được cắt thẳng

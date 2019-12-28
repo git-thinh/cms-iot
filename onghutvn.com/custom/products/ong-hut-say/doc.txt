@@ -1,6 +1,8 @@
+Ống hút
+menu_main;banner;hot
 Ống hút sậy
-2000
 
+2000
 Độ dài: 20cm
 - Cỡ ống: đường kính trong 4.5-6.5mm 
 - Độ dày ống: 0.5-0.8mm 

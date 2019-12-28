@@ -1,0 +1,1 @@
+{"recid":17070607642687,"url":"cam-ket_17070607642687.html","title":"Báo giá","active":false,"topic":"","tag":"menu","image":"","image_position":0,"keyword":"","file":null,"content":"<a target=blank href='bao-gia.pdf'><img class=bao-gia src=bao-gia.png></a><style>.article-cndata h1{display:none;}</style>","order":3}

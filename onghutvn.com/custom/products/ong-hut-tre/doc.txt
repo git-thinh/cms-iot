@@ -1,5 +1,5 @@
 Ống hút
-menu_main;banner;hot
+menu_main;banner;hot;product
 Ống hút tre
 
 1000

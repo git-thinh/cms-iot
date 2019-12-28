@@ -1,0 +1,83 @@
+﻿
+<div class="tab-head">
+    <div class="hometab-heading box-heading">Sản phẩm</div>
+    <div id="tabs" class="htabs">
+        <ul class='etabs'>
+            <!--<li class='tab'>
+                <a href="#tab-latest">Latest</a>
+            </li>
+            <li class='tab'>
+            </li>
+            <li class='tab'>
+                <a href="#tab-special">Special</a>
+            </li>-->
+        </ul>
+    </div>
+</div>
+<div id="tab-latest" class="tab-content">
+    <div class="box">
+        <div class="box-content">
+
+
+            <div class="customNavigation">
+                <a class="fa prev fa-arrow-left">&nbsp;</a>
+                <a class="fa next fa-arrow-right">&nbsp;</a>
+            </div>
+            <div class="box-product product-carousel" id="tablatest-carousel">
+
+                {{#each articles  ^ Tags != null && string.Join(";", Tags).IndexOf("product") != -1 }}
+                <div class="slider-item">
+                    <div class="product-block product-thumb transition">
+                        <div class="product-block-inner">
+
+                            <div class="image">
+
+
+                                <a href="../{{Key}}">
+                                    <img src="{{ImageThumb}}" title="{{ImageThumb}}" alt="{{Title}}" class="img-responsive reg-image" />
+                                    <img class="img-responsive hover-image" src="{{ImageThumb}}" title="{{Title}}" alt="{{Title}}" />
+                                </a>
+
+                                <!--<div class="button-group1">
+                                    <div class="quickview">
+                                        <a class="quickbox" data-toggle="tooltip" data-placement="right" title="Quick View" href="../{{Key}}"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                    <button class="wishlist" type="button" data-toggle="tooltip" data-placement="right" title="Add to Wish List " onclick="wishlist.add('49');"><i class="fa fa-heart"></i></button>
+                                    <button class="compare" type="button" data-toggle="tooltip" data-placement="right" title="Compare this Product " onclick="compare.add('49');"><i class="fa fa-exchange"></i></button>
+                                </div>
+
+                                <div class="rating">
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                </div>-->
+
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+                                    <h4><a href="../{{Key}}">{{Title}}</a></h4>
+
+                                    <!--<p class="price">
+                                        $241.99
+                                        <span class="price-tax">Ex Tax: $199.99</span>
+                                    </p>-->
+
+
+                                    <!--<div class="button-group">
+                                        <a href="../{{Key}}" class="addtocart">Chi tiết</a>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+    <span class="tablatest_default_width" style="display:none; visibility:hidden"></span>
+</div>

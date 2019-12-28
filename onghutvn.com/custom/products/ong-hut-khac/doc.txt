@@ -1,5 +1,5 @@
 Ống hút
-banner;hot
+banner;hot;product
 Ống hút khác
 
 3000

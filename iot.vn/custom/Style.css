@@ -1,1 +1,17 @@
 ﻿
+.article-content {
+}
+
+    .article-content img {
+        width: 100% !important;
+    }
+
+    .article-content .article-product {
+    }
+
+        .article-content .article-product li:first-child {
+            font-weight: 700;
+        }
+
+        .article-content .article-product li {
+        }

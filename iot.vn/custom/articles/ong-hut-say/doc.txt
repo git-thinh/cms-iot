@@ -1,13 +1,22 @@
 Ống hút
 menu_main;slide;hot;product
 Ống hút sậy
-
 2000
-Độ dài: 20cm
-- Cỡ ống: đường kính trong 4.5-6.5mm 
-- Độ dày ống: 0.5-0.8mm 
-- Phần đầu mút của ống hút được cắt thẳng
-- Ruột ống được làm sạch 
-- Chất liệu: cỏ mọc tự nhiên (1-2 năm tuổi) 
-- Sản phẩm được làm thủ công,không xỉn màu
-- Bảo quản: Để nơi khô ráo , thoáng mát
+
+<ul class=article-product>
+	<li>Độ dài: 20cm</li>
+	<li>- Cỡ ống: đường kính trong 4.5-6.5mm </li>
+	<li>- Độ dày ống: 0.5-0.8mm </li>
+	<li>- Phần đầu mút của ống hút được cắt thẳng</li>
+	<li>- Ruột ống được làm sạch </li>
+	<li>- Chất liệu: cỏ mọc tự nhiên (1-2 năm tuổi) </li>
+	<li>- Sản phẩm được làm thủ công,không xỉn màu</li>
+	<li>- Bảo quản: Để nơi khô ráo , thoáng mát</li>
+</ul>
+
+
+
+
+
+
+

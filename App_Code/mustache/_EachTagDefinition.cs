@@ -88,6 +88,9 @@ namespace Mustache
             }
             catch { }
 
+            if (value.GetType().Name == "String[]") { 
+            }
+
             if (enumerable == null)
             {
                 yield break;

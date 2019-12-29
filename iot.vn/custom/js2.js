@@ -1,41 +1,41 @@
 ﻿
 function subscribe() {
-    var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var email = $('#txtemail').val();
-    if (email != "") {
-        if (!emailpattern.test(email)) {
-            $('.text-danger').remove();
-            var str = '<span class="error">Invalid Email</span>';
-            $('#txtemail').after('<div class="text-danger">Invalid Email</div>');
+    ////var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    ////var email = $('#txtemail').val();
+    ////if (email != "") {
+    ////    if (!emailpattern.test(email)) {
+    ////        $('.text-danger').remove();
+    ////        var str = '<span class="error">Invalid Email</span>';
+    ////        $('#txtemail').after('<div class="text-danger">Invalid Email</div>');
 
-            return false;
-        }
-        else {
-            $.ajax({
-                url: 'index.php?route=extension/module/newsletters/news',
-                type: 'post',
-                data: 'email=' + $('#txtemail').val(),
-                dataType: 'json',
+    ////        return false;
+    ////    }
+    ////    else {
+    ////        $.ajax({
+    ////            url: 'index.php?route=extension/module/newsletters/news',
+    ////            type: 'post',
+    ////            data: 'email=' + $('#txtemail').val(),
+    ////            dataType: 'json',
 
 
-                success: function (json) {
+    ////            success: function (json) {
 
-                    $('.text-danger').remove();
-                    $('#txtemail').after('<div class="text-danger">' + json.message + '</div>');
+    ////                $('.text-danger').remove();
+    ////                $('#txtemail').after('<div class="text-danger">' + json.message + '</div>');
 
-                }
+    ////            }
 
-            });
-            return false;
-        }
-    }
-    else {
-        $('.text-danger').remove();
-        $('#txtemail').after('<div class="text-danger">Email Is Require</div>');
-        $(email).focus();
+    ////        });
+    ////        return false;
+    ////    }
+    ////}
+    ////else {
+    ////    $('.text-danger').remove();
+    ////    $('#txtemail').after('<div class="text-danger">Email Is Require</div>');
+    ////    $(email).focus();
 
-        return false;
-    }
+    ////    return false;
+    ////}
 
 
 }
@@ -54,6 +54,27 @@ function quickbox() {
 
 
 $(document).ready(function () {
+    /* Search */
+    $('#searchbox input[name=\'search\']').parent().find('button').on('click', function () {
+        //var url = $('base').attr('href') + 'index.php?route=product/search';
+
+        //var value = $('#searchbox input[name=\'search\']').val();
+
+        //if (value) {
+        //    url += '&search=' + encodeURIComponent(value);
+        //}
+
+        //var category_id = $('#searchbox select[name=\'category_id\']').prop('value');
+
+        //if (category_id > 0) {
+        //    url += '&category_id=' + encodeURIComponent(category_id);
+        //}
+
+        //location = url;
+
+        location.href = 'http://' + location.host;
+    });
+
 
     //$('#slideshow0').swiper({
     //    mode: 'horizontal',

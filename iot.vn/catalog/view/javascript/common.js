@@ -50,23 +50,23 @@ $(document).ready(function() {
 		$('#form-language').submit();
 	});
 	/* Search */
-	$('#searchbox input[name=\'search\']').parent().find('button').on('click', function() {
-		var url = $('base').attr('href') + 'index.php?route=product/search';
+	//////$('#searchbox input[name=\'search\']').parent().find('button').on('click', function() {
+	//////	var url = $('base').attr('href') + 'index.php?route=product/search';
 
-		var value = $('#searchbox input[name=\'search\']').val();
+	//////	var value = $('#searchbox input[name=\'search\']').val();
 
-		if (value) {
-			url += '&search=' + encodeURIComponent(value);
-		}
+	//////	if (value) {
+	//////		url += '&search=' + encodeURIComponent(value);
+	//////	}
 		
-		var category_id = $('#searchbox select[name=\'category_id\']').prop('value');
+	//////	var category_id = $('#searchbox select[name=\'category_id\']').prop('value');
 
-		if (category_id > 0) {
-			url += '&category_id=' + encodeURIComponent(category_id);
-		}
+	//////	if (category_id > 0) {
+	//////		url += '&category_id=' + encodeURIComponent(category_id);
+	//////	}
 		
-		location = url;
-	});
+	//////	location = url;
+	//////});
 
 	$('#searchbox input[name=\'search\']').on('keydown', function(e) {
 		if (e.keyCode == 13) {

@@ -171,8 +171,8 @@ public class global : System.Web.HttpApplication
                         {
                             oArticle o = new oArticle() { Domain = domain, Menus = menus };
                             o.Key = Path.GetFileName(dirs[i]);
-                            o.Tags = lines[1].Split(';');
-                            o.Title = lines[2];
+                            if(lines.Length > 0) o.Tags = lines[1].Split(';');
+                            if (lines.Length > 1) o.Title = lines[2];
 
                             string[] imgs = Directory.GetFiles(dirs[i], "*.jpg")
                                 .Select(x => x.Replace(root, string.Empty).Replace("\\", "/").ToLower()).ToArray();
@@ -182,6 +182,10 @@ public class global : System.Web.HttpApplication
                                 o.ImageBanner = imgs.Where(x => x.Contains("banner")).SingleOrDefault();
                                 o.Images = imgs.Where(x => !x.Contains("thumb")).ToArray();
                             }
+
+                            if (lines.Length > 2) o.Price = lines[3];
+                            if (lines.Length > 3) o.Description = lines[4];
+                            if (lines.Length > 4) o.Content = string.Join(Environment.NewLine, lines.Where((x, ii) => ii > 4));
 
                             _ARTICLES.Add(o);
                         }
@@ -210,18 +214,43 @@ public class global : System.Web.HttpApplication
         }
     }
 
+    string ___render(string domain, string text, object article) {
+
+        var views = _VIEWS.Where(x => x.Domain == domain).ToArray();
+        for (int i = 0; i < views.Length; i++) text = text.Replace("{{#!" + views[i].Name + "}}", views[i].Html);
+
+        FormatCompiler compiler = new FormatCompiler();
+        compiler.RegisterTag(new _MT_TEMP_URL_BUILD_TAG_DEFINITION(), true);
+        Generator generator = compiler.Compile(text);
+        generator.KeyNotFound += (obj, args) =>
+        {
+            args.Substitute = string.Empty;
+            args.Handled = true;
+        };
+
+        text = generator.Render(new
+        {
+            domain = domain,
+            menus = _MENUS.Where(x => x.Domain == domain).ToArray(),
+            articles = _ARTICLES.Where(x => x.Domain == domain).ToArray(),
+            article = article
+        });
+
+        return text;
+    }
+
     protected void Application_BeginRequest(Object sender, EventArgs e)
     {
         string url = Request.Path.ToLower(),
             domain = Request.Url.Host,
             root = Path.Combine(Server.MapPath("~/"), domain + "\\"),
-            file, path, text;
+            key = url.Substring(1), file, path, text;
 
-        if (url != "/cache" && _ARTICLES.Count == 0) ___cache(domain, root);
+        if (key != "cache" && _ARTICLES.Count == 0) ___cache(domain, root);
 
-        switch (url)
+        switch (key)
         {
-            case "/":
+            case "":
                 #region
                 if (domain == "onghutvn.com" || domain == "iot.vn")
                 {
@@ -229,25 +258,8 @@ public class global : System.Web.HttpApplication
                     if (File.Exists(file))
                     {
                         text = File.ReadAllText(file);
-
-                        var views = _VIEWS.Where(x => x.Domain == domain).ToArray();
-                        for (int i = 0; i < views.Length; i++) text = text.Replace("{{#!" + views[i].Name + "}}", views[i].Html);
-
-                        FormatCompiler compiler = new FormatCompiler();
-                        compiler.RegisterTag(new _MT_TEMP_URL_BUILD_TAG_DEFINITION(), true);
-                        Generator generator = compiler.Compile(text);
-                        generator.KeyNotFound += (obj, args) =>
-                        {
-                            args.Substitute = string.Empty;
-                            args.Handled = true;
-                        };
-                        text = generator.Render(new
-                        {
-                            domain = domain,
-                            menus = _MENUS.Where(x => x.Domain == domain).ToArray(),
-                            articles = _ARTICLES.Where(x => x.Domain == domain).ToArray()
-                        });
-
+                        text = ___render(domain, text, new oArticle());
+                        
                         base.Response.ContentType = "text/html";
                         base.Response.Write(text);
                         base.CompleteRequest();
@@ -259,7 +271,7 @@ public class global : System.Web.HttpApplication
                 }
                 #endregion
                 break;
-            case "/cache":
+            case "cache":
                 #region
 
                 ___cache(domain, root);
@@ -279,10 +291,37 @@ public class global : System.Web.HttpApplication
                 #endregion
 
                 break;
-            case "/admin":
-            case "/admin/":
-            case "/admin.html":
+            case "admin":
+            case "admin/":
+            case "admin.html":
                 Context.RewritePath("/admin.htm");
+                break;
+            default:
+                #region 
+                if (domain == "onghutvn.com" || domain == "iot.vn")
+                {
+                    if (key.IndexOf('/') == -1)
+                    {
+                        oArticle article = _ARTICLES.Where(x => x.Domain == domain && x.Key == url.Substring(1)).SingleOrDefault();
+                        if (article != null)
+                        {
+                            file = Path.Combine(root, "article.html");
+                            if (File.Exists(file))
+                            {
+                                text = File.ReadAllText(file);
+                                text = ___render(domain, text, article);
+
+                                base.Response.ContentType = "text/html";
+                                base.Response.Write(text);
+                                base.CompleteRequest();
+                            }
+                        }
+                    }
+                }
+                else
+                { 
+                }
+                #endregion
                 break;
         }
 

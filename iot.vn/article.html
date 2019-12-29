@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="ltr" lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>onghutvn.com</title>
+    <base href="http://{{domain}}/{{domain}}/" />
+    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <!--<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />-->
+    <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,500,600,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700,900&display=swap" rel="stylesheet">
+    <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="catalog/view/theme/OPCADD094/stylesheet/stylesheet.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPCADD094/stylesheet/megnor/carousel.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPCADD094/stylesheet/megnor/custom.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPCADD094/stylesheet/megnor/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPCADD094/stylesheet/megnor/animate.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/OPCADD094/stylesheet/megnor/lightbox.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
+
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" />
+
+    <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+    <link href="http://opencart.templatemela.com/OPCADD4/OPC094/image/catalog/cart.png" rel="icon" />
+    <!-- Megnor www.templatemela.com - Start -->
+    <script type="text/javascript" src="catalog/view/javascript/lightbox/lightbox-2.6.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/tabs.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/custom.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/jstree.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/carousel.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/megnor.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/jquery.custom.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/jquery.formalize.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/megnor/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+
+</head>
+<body class="information-blogger   layout-2 left-col">
+    <nav id="top">
+        <div class="container">
+        </div>
+    </nav>
+
+    <div class="header-container">
+        <div class="container">
+            <div class="row">
+                <div class="header-center">
+                    {{#!HEADER_MENU_CATEGORY_1}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="header-main">
+                    <div class="header_left">
+                        {{#!HEADER_MENU_CATEGORY_2}}
+                    </div>
+                    <div class="header-right">
+                        {{#!HEADER_MENU_MAIN_MOBI_1}}
+                        <div class="head-right-top">
+                            {{#!HEADER_MENU_MAIN_1}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <ul class="breadcrumb">
+            <li><a href="../"><i class="fa fa-home"></i></a></li>
+            <!--<li><a href="http://opencart.templatemela.com/OPCADD4/OPC094/index.php?route=information/blogger">Blogs</a></li>-->
+            <li><a href="{{article.Key}}">{{article.Title}}</a></li>
+        </ul>
+
+        <div class="row">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+
+                {{#!HEADER_MENU_CATEGORY_2}}
+
+                {{#!HEADER_MENU_CATEGORY_3}}
+
+                <span class="latest_default_width" style="display:none; visibility:hidden"></span>
+            </aside>
+
+            <div id="content" class="col-sm-9  single-blog">
+                <h1>{{article.Title}}</h1>
+                <div class="blog blog_post">
+
+                    <div class="blog-desc">
+                        {{article.Description}}
+                    </div>
+
+                    <div class="article-content">
+                        {{article.Content}}
+                    </div>
+
+                    <div class="main_thumb">
+                        {{#each article.Images}}
+                        <img src="{{this}}" alt="{{article.Title}}" title="{{article.Title}}" />
+                        {{/each}}
+                    </div>
+
+                    <div class="block-title"><h3>Đăng ký thông tin đặt hàng</h3></div>
+                    <div class="panel panel-default" id="add-comment" style="margin-bottom: 10px; padding: 0px 10px;">
+
+                        <form action="http://opencart.templatemela.com/OPCADD4/OPC094/index.php?route=information/blogger&amp;blogger_id=5" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="form-group required" style="margin-top: 10px;">
+                                <label class="col-sm-3 control-label" for="input-author"><b>Họ tên</b></label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="name" value="" id="input-name" placeholder="Họ tên" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group required" style="margin-top: 10px;">
+                                <label class="col-sm-3 control-label" for="input-email"><b>Điện thoại</b></label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="phone" value="" id="input-phone" placeholder="Phone" class="form-control" />
+
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 10px;">
+                                <label class="col-sm-3 control-label" for="input-comment"><b>Nội dung</b></label>
+                                <div class="col-sm-8">
+                                    <textarea name="comment" rows="5" id="input-comment" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <!--<fieldset>
+                <legend>Captcha</legend>
+                <div class="form-group required">
+                    <label class="col-sm-3 control-label" for="input-captcha">Enter the code in the box below</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="captcha" id="input-captcha" class="form-control" />
+                        <img src="index.php?route=extension/captcha/basic/captcha" alt="" />
+                    </div>
+                </div>
+            </fieldset>-->
+
+                            <input type="hidden" name="auto_approve" value="1" />
+                            <div class="buttons text-right"><input class="btn btn-primary" type="submit" value="Gửi" data-toggle="tooltip" title="Submit" /></div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {{#!FOOTER_1}}
+
+    <link href="custom/Style.css" rel="stylesheet" />
+    <script src="custom/js2.js"></script>
+</body>
+</html> 

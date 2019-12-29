@@ -1,12 +1,20 @@
 Ống hút
 menu_main;slide;hot;product
 Ống hút tre
-
 1000
-Độ dài: 20cm
-- Cỡ ống: đường kính trong 5-12mm 
-- Phần đầu mút của ống hút được cắt thẳng
-- Ruột ống được làm sạch , mài vỏ nhẵn
-- Chất liệu: tre (6 tháng - 1 năm tuổi) 
-- Sản phẩm được làm thủ công. 
-- Bảo quản: Để nơi khô ráo, Không nên ngâm lâu trong nước.
+
+<ul class=article-product>
+	<li>Độ dài: 20cm</li>
+	<li>- Cỡ ống: đường kính trong 5-12mm </li>
+	<li>- Phần đầu mút của ống hút được cắt thẳng</li>
+	<li>- Ruột ống được làm sạch , mài vỏ nhẵn</li>
+	<li>- Chất liệu: tre (6 tháng - 1 năm tuổi) </li>
+	<li>- Sản phẩm được làm thủ công. </li>
+	<li>- Bảo quản: Để nơi khô ráo, Không nên ngâm lâu trong nước.</li>
+</ul>
+
+
+
+
+
+

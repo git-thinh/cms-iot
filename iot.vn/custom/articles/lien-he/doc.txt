@@ -1,0 +1,16 @@
+Tin tức
+
+Liên hệ
+0
+
+
+<ul>
+    <li class="address">My Company, 42 Puffin street, Puffinville France</li> 
+    <li class="call-num">+91 123 456 789, 123 456 789</li>
+    <li class="email">
+        <span class="email">Email:</span>
+        <a href="#">demo@bigshopper.com</a>
+    </li> 
+</ul>
+<p>Giới thiệu công ty balbalu ...</p> 
+

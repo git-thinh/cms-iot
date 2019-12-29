@@ -5,10 +5,13 @@
         <div id="slideshow0" class="swiper-container" style="opacity: 1;">
             <div class="swiper-wrapper">
                 {{#each articles  ^ ImageBanner != null && ImageBanner.Length > 0 && Tags != null && string.Join(";", Tags).IndexOf("banner") != -1 }}
-                <div class="swiper-slide text-center">
+                <div class="swiper-slide text-center" style="position:relative;">
                     <a href="../{{Key}}" alt="{{Title}}">
                         <img src="{{ImageBanner}}" alt="{{Title}}" class="img-responsive" />
                     </a>
+                    <div style="position:absolute;bottom:0;right:0;display:inline-block;padding:5px 10px;background-color:#ffd200;color:black;">
+                        {{Title}}
+                    </div>
                 </div>
                 {{/each}}
             </div>

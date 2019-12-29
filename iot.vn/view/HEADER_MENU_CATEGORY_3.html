@@ -1,0 +1,52 @@
+﻿<div class="box">
+    <div class="box-heading">Sản phẩm mới</div>
+    <div class="box-content">
+
+        <div class="box-product  productbox-grid" id=" latest-grid">
+
+            {{#each articles  ^ Tags != null && string.Join(";", Tags).IndexOf("product") != -1 }}
+
+            <div class="product-items">
+                <div class="product-block product-thumb transition">
+                    <div class="product-block-inner">
+                        <div class="image">
+                            <a href="../{{Key}}">
+                                <img src="{{ImageThumb}}" alt="{{Title}}" title="{{Title}}" class="img-responsive" style="width:50px;height:70px;" />
+                            </a>
+
+                            <div class="button-group1">
+                                <div class="quickview">
+                                    <a class="quickbox" data-toggle="tooltip" data-placement="right" title="Quick View" href=""><i class="fa fa-eye"></i></a>
+                                </div>
+                                <button class="wishlist" type="button" data-toggle="tooltip" data-placement="right" title="Add to Wish List " onclick="wishlist.add('49 ');"><i class="fa fa-heart"></i></button>
+                                <button class="compare" type="button" data-toggle="tooltip" data-placement="right" title="Compare this Product " onclick="compare.add('49 ');"><i class="fa fa-exchange"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <div class="caption">
+                                <div class="rating">
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                </div>
+                                <h4><a href="../{{Key}}">{{Title}}</a></h4>
+                                <p class="price">
+                                    Liên hệ
+                                    <!--<span class="price-tax">Ex Tax: $199.99</span>-->
+                                </p>
+                            </div>
+
+                            <!--<div class="button-group">
+                                <button type="button" class="addtocart" onclick="cart.add('49 ');">Add to Cart </button>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</div> 

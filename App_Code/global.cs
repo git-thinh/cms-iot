@@ -6,6 +6,22 @@ using Newtonsoft.Json;
 using Mustache;
 using System.Linq.Dynamic;
 
+public class oOrder
+{
+    public long CreateDateTime { set; get; }
+    public string Domain { set; get; }
+    public string Name { set; get; }
+    public string Phone { set; get; }
+    public string Content { set; get; }
+    public oOrder()
+    {
+        Name = string.Empty;
+        Phone = string.Empty;
+        Content = string.Empty;
+        CreateDateTime = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss"));
+    }
+}
+
 public class oView
 {
     public string Domain { set; get; }
@@ -123,6 +139,7 @@ public class global : System.Web.HttpApplication
     static List<oArticle> _ARTICLES = new List<oArticle>() { };
     static List<oMenu> _MENUS = new List<oMenu>() { };
     static List<oView> _VIEWS = new List<oView>() { };
+    static List<oOrder> _ORDERS = new List<oOrder>() { };
 
     void ___cache(string domain, string root)
     {
@@ -289,12 +306,43 @@ public class global : System.Web.HttpApplication
                 base.CompleteRequest();
 
                 #endregion
-
                 break;
             case "admin":
             case "admin/":
             case "admin.html":
                 Context.RewritePath("/admin.htm");
+                break;
+            case "api/order/submit":
+                #region
+
+                string name = Context.Request.Form["name"],
+                    phone = Context.Request.Form["phone"],
+                    comment = Context.Request.Form["comment"];
+
+                if (!string.IsNullOrEmpty(phone) && !string.IsNullOrEmpty(name)) {
+                    _ORDERS.Add(new oOrder() { Content = comment, Domain = domain, Name = name , Phone = phone });
+                }
+
+                base.Response.Redirect("/");
+                base.CompleteRequest();
+                #endregion
+                break;
+            case "api/order/list":
+                #region 
+                text = JsonConvert.SerializeObject(_ORDERS.Where(x => x.Domain == domain));
+                base.Response.ContentType = "text/html";
+                base.Response.Write(text);
+                base.CompleteRequest();
+                #endregion
+                break;
+            case "api/test":
+                #region 
+                //text = JsonConvert.SerializeObject(_ORDERS.Where(x => x.Domain == domain));
+                //base.Response.ContentType = "text/html";
+                //base.Response.Write(text);
+                base.Response.Headers.Add("WWW-Authenticate", string.Format("Basic realm=\"{0}\"", domain));
+                base.CompleteRequest();
+                #endregion
                 break;
             default:
                 #region 

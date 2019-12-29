@@ -4,13 +4,18 @@ Liên hệ
 0
 
 
+<h1>CÔNG TY CỔ PHẦN THƯƠNG MẠI KỸ THUẬT VÀ THIẾT KẾ DTH</h1>
 <ul>
-    <li class="address">My Company, 42 Puffin street, Puffinville France</li> 
-    <li class="call-num">+91 123 456 789, 123 456 789</li>
+    <li class="address">Số 7 ngõ 53 đường Ngọa Long, Phường Minh Khai, Quận Bắc Từ Liêm, Thành phố Hà Nội, Việt Nam</li> 
+    <li class="call-num">0858204555</li>
     <li class="email">
         <span class="email">Email:</span>
-        <a href="#">demo@bigshopper.com</a>
-    </li> 
+        <a href="mailto:dth.company90@gmail.com">dth.company90@gmail.com</a>
+    </li>
+    <li class="email">
+        <span class="email">Mã số thuế:</span>
+        <a href="../">0108966896</a>
+    </li>
 </ul>
 <p>Giới thiệu công ty balbalu ...</p> 
 

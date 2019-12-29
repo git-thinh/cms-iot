@@ -1,0 +1,161 @@
+﻿
+<footer>
+    <div class="content_footer_top">
+        <div class="container">
+
+            <div class="newsletter">
+                <div class="newsleft">
+                    <span class="news-title1">Đăng ký nhận thông tin</span>
+                    <span class="news-title4">khuyến mại</span>
+                    <!--<span class="news-title1">Signup and get a Voucher </span>
+                    <span class="news-title4">worth $250</span>
+                    <span class="news-title3">For Newly</span>
+                    <span class="news-title2">*voucher is valid only on new registration</span>-->
+                </div>
+
+                <div class="newsright">
+                    <div class="list-unstyled">
+                        <div class="row">
+                            <form method="post">
+                                <div class="form-group required">
+                                    <label class="col-sm-2 control-label" for="input-firstname">E-Mail</label>
+                                    <div class="input-news">
+                                        <input type="email" name="txtemail" id="txtemail" value="" placeholder="E-Mail" class="form-control input-lg" />
+                                    </div>
+
+                                    <div class="subscribe-btn">
+                                        <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">Đăng ký</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sale-cms">
+                <div class="sale-cms-text">
+                    <img src="image/catalog/Sale.png">
+                    {{#each articles  ^ ImageBanner != null && ImageBanner.Length > 0 && Tags != null && string.Join(";", Tags).IndexOf("banner_1") != -1 $1 }}
+                    <a href="../{{Key}}" alt="{{Title}}" class="text3">Khuyến mại</a>
+                    <!--<a href="#">View Items&gt;&gt;</a>-->
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer" class="container">
+        <div class="row">
+            <div class="footer-blocks">
+
+                <div class="content_footer_left">
+                    <div class="col-sm-3 column" id="footer_aboutus_block">
+                        <h5 class="toggle">Giới thiệu<a class="mobile_togglemenu">&nbsp;</a></h5>
+                        <ul>
+                            <li class="tm-about-logo">
+                                <a href="#">
+                                    <img alt="" src="image/catalog/Footer-Logo.png">
+                                </a>
+                            </li>
+                            <li class="about">
+                                Passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in Middle of text. All the Passage of Lorem Ipsum, you need.
+                            </li>
+                            <li class="follow">Follow Us </li>
+                            <li class="facebook social">
+                                <a href="#">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="twitter social">
+                                <a href="#">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="gplus social">
+                                <a href="#">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="linkedin social">
+                                <a href="#">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+                <div id="info" class="col-sm-3 column">
+                    <h5>Sản phẩm</h5>
+                    <ul class="list-unstyled">
+                        {{#each articles  ^ Tags != null && string.Join(";", Tags).IndexOf("product") != -1 $5 }}
+                        <li><a href="../{{Key}}" alt="{{Title}}">{{Title}}</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <!--<div class="col-sm-3 column">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="?route=information/contact">Contact Us</a></li>
+                        <li><a href="?route=account/return/add">Returns</a></li>
+                        <li><a href="?route=information/sitemap">Site Map</a></li>
+                    </ul>
+                </div>-->
+                <!--<div id="extra-link" class="col-sm-3 column">
+                    <h5>Extras</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="?route=information/contact">Contact Us</a></li>
+                        <li><a href="?route=product/manufacturer">Brands</a></li>
+                        <li><a href="?route=account/voucher">Gift Certificates</a></li>
+                        <li><a href="?route=product/special">Specials</a></li>
+                        <li><a href="?route=account/wishlist">Wish List</a></li>
+                        <li><a href="?route=affiliate/login">Affiliates</a></li>
+                        <li><a href="?route=information/sitemap">Site Map</a></li>
+                    </ul>
+                </div>
+                <div id="account_link" class="col-sm-3 column">
+                    <h5>My Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="?route=account/account">My Account</a></li>
+                        <li><a href="?route=account/order">Order History</a></li>
+                        <li><a href="?route=account/wishlist">Wish List</a></li>
+                        <li><a href="?route=affiliate/login">Affiliates</a></li>
+                        <li><a href="?route=account/newsletter">Newsletter</a></li>
+                        <li><a href="?route=account/return/add">Returns</a></li>
+                        <li><a href="?route=account/voucher">Gift Certificates</a></li>
+                    </ul>
+                </div>-->
+
+
+                <div class="content_footer_right">
+                    <div class="col-sm-3 column" id="footer_storeinformation_block">
+                        <h5 class="toggle">Liên hệ<a class="mobile_togglemenu">&nbsp;</a></h5>
+                        <ul>
+                            <li class="address">My Company, 42 Puffin street</li>
+                            <li>Puffinville France</li>
+                            <li class="call-num">+91 123 456 789, 123 456 789</li>
+                            <li class="email">
+                                <span class="email">Email:</span>
+                                <a href="#">demo@bigshopper.com</a>
+                            </li>
+                            <li class="payment">Payment</li>
+                            <li class="visa paymt"><a href="#"></a></li>
+                            <li class="paypal paymt"><a href="#"></a></li>
+                            <li class="mastercard paymt"><a href="#"></a></li>
+                            <li class="discover paymt"><a href="#"></a></li>
+                            <li class="americanexpress paymt"><a href="#"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</footer>

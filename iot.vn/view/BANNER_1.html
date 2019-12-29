@@ -1,0 +1,14 @@
+﻿
+        {{#each articles  ^ ImageBanner != null && ImageBanner.Length > 0 && Tags != null && string.Join(";", Tags).IndexOf("banner_1") != -1 $1 }}
+        <div class="product_banner">
+            <div class="single_product_img">
+                <a href="../{{Key}}" title="pbanner"><img class="prd_image" src="{{ImageBanner}}" alt="{{Title}}"></a>
+            </div>
+            <div class="cmsinnertext">
+                <span class="cmsblocktext cmsblocktext1"><a href="../{{Key}}" alt="{{Title}}" style="color:#ffd200;">{{Title}}</a></span>
+                <!--<span class="cmsblocktext cmsblocktext2">Best and affordable prices</span>
+                    <span class="btncms btn btncms1">Chi tiết</span>-->
+            </div>
+        </div>
+        <span class="featured_default_width" style="display:none; visibility:hidden"></span>
+        {{/each}}

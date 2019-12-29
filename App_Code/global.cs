@@ -119,10 +119,96 @@ public class global : System.Web.HttpApplication
         }
     }
 
-    const string _ROOT_PRODUCTS = @"custom\products";
+    const string _ROOT_ARTICLES = @"custom\articles";
     static List<oArticle> _ARTICLES = new List<oArticle>() { };
     static List<oMenu> _MENUS = new List<oMenu>() { };
     static List<oView> _VIEWS = new List<oView>() { };
+
+    void ___cache(string domain, string root)
+    {
+        string file, path, text;
+
+        text = "[]";
+        path = Path.Combine(root, _ROOT_ARTICLES);
+        if (Directory.Exists(path) == false) Directory.CreateDirectory(path);
+        if (Directory.Exists(Path.Combine(root, "view")) == false) Directory.CreateDirectory(Path.Combine(root, "view"));
+
+        _ARTICLES = _ARTICLES.Where(x => x.Domain != domain).ToList();
+        _MENUS = _MENUS.Where(x => x.Domain != domain).ToList();
+        _VIEWS = _VIEWS.Where(x => x.Domain != domain).ToList();
+
+        string[] dirs = Directory.GetDirectories(path);
+        if (dirs.Length > 0)
+        {
+            string[] menus = new string[] { };
+            string[] lines;
+            string f;
+            for (int i = 0; i < dirs.Length; i++)
+            {
+                f = Path.Combine(dirs[i], "doc.txt");
+                if (File.Exists(f))
+                {
+                    lines = File.ReadAllLines(f);
+                    if (lines.Length > 3)
+                    {
+                        try
+                        {
+                            menus = lines[0].Split(';').Select(x => x.Trim()).ToArray();
+                            for (int k = 0; k < menus.Length; k++)
+                            {
+                                if (_MENUS.Exists(x => x.Domain == domain && x.Name.ToLower() == menus[k].ToLower()) == false)
+                                {
+                                    _MENUS.Add(new oMenu() { Domain = domain, Name = menus[k] });
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            string s = ex.Message;
+                        }
+
+                        try
+                        {
+                            oArticle o = new oArticle() { Domain = domain, Menus = menus };
+                            o.Key = Path.GetFileName(dirs[i]);
+                            o.Tags = lines[1].Split(';');
+                            o.Title = lines[2];
+
+                            string[] imgs = Directory.GetFiles(dirs[i], "*.jpg")
+                                .Select(x => x.Replace(root, string.Empty).Replace("\\", "/").ToLower()).ToArray();
+                            if (imgs.Length > 0)
+                            {
+                                o.ImageThumb = imgs.Where(x => x.Contains("thumb")).SingleOrDefault();
+                                o.ImageBanner = imgs.Where(x => x.Contains("banner")).SingleOrDefault();
+                                o.Images = imgs.Where(x => !x.Contains("thumb")).ToArray();
+                            }
+
+                            _ARTICLES.Add(o);
+                        }
+                        catch (Exception ex)
+                        {
+                            string s = ex.Message;
+                        }
+                    }
+                }
+            }
+        }
+
+        dirs = Directory.GetFiles(Path.Combine(root, "view"));
+        if (dirs.Length > 0)
+        {
+            for (int i = 0; i < dirs.Length; i++)
+            {
+                file = Path.GetFileName(dirs[i]);
+                _VIEWS.Add(new oView()
+                {
+                    Domain = domain,
+                    Name = file.Substring(0, file.Length - 5),
+                    Html = File.ReadAllText(dirs[i])
+                });
+            }
+        }
+    }
 
     protected void Application_BeginRequest(Object sender, EventArgs e)
     {
@@ -130,6 +216,9 @@ public class global : System.Web.HttpApplication
             domain = Request.Url.Host,
             root = Path.Combine(Server.MapPath("~/"), domain + "\\"),
             file, path, text;
+
+        if (url != "/cache" && _ARTICLES.Count == 0) ___cache(domain, root);
+
         switch (url)
         {
             case "/":
@@ -173,72 +262,7 @@ public class global : System.Web.HttpApplication
             case "/cache":
                 #region
 
-                text = "[]";
-                path = Path.Combine(root, _ROOT_PRODUCTS);
-                if (Directory.Exists(path) == false) Directory.CreateDirectory(path);
-                if (Directory.Exists(Path.Combine(root, "view")) == false) Directory.CreateDirectory(Path.Combine(root, "view"));
-
-                _ARTICLES = _ARTICLES.Where(x => x.Domain != domain).ToList();
-                _MENUS = _MENUS.Where(x => x.Domain != domain).ToList();
-                _VIEWS = _VIEWS.Where(x => x.Domain != domain).ToList();
-
-                string[] dirs = Directory.GetDirectories(path);
-                if (dirs.Length > 0)
-                {
-                    string[] menus;
-                    string[] lines;
-                    string f;
-                    for (int i = 0; i < dirs.Length; i++)
-                    {
-                        f = Path.Combine(dirs[i], "doc.txt");
-                        if (File.Exists(f))
-                        {
-                            lines = File.ReadAllLines(f);
-                            if (lines.Length > 3)
-                            {
-                                menus = lines[0].Split(';').Select(x => x.Trim()).ToArray();
-                                for (int k = 0; k < menus.Length; k++)
-                                {
-                                    if (_MENUS.Exists(x => x.Domain == domain && x.Name.ToLower() == menus[k].ToLower()) == false)
-                                    {
-                                        _MENUS.Add(new oMenu() { Domain = domain, Name = menus[i] });
-                                    }
-                                }
-
-                                oArticle o = new oArticle() { Domain = domain, Menus = menus };
-                                o.Key = Path.GetFileName(dirs[i]);
-                                o.Tags = lines[1].Split(';');
-                                o.Title = lines[2];
-
-                                string[] imgs = Directory.GetFiles(dirs[i], "*.jpg")
-                                    .Select(x => x.Replace(root, string.Empty).Replace("\\", "/").ToLower()).ToArray();
-                                if (imgs.Length > 0)
-                                {
-                                    o.ImageThumb = imgs.Where(x => x.Contains("thumb")).SingleOrDefault();
-                                    o.ImageBanner = imgs.Where(x => x.Contains("banner")).SingleOrDefault();
-                                    o.Images = imgs.Where(x => !x.Contains("thumb")).ToArray();
-                                }
-
-                                _ARTICLES.Add(o);
-                            }
-                        }
-                    }
-                }
-
-                dirs = Directory.GetFiles(Path.Combine(root, "view"));
-                if (dirs.Length > 0)
-                {
-                    for (int i = 0; i < dirs.Length; i++)
-                    {
-                        file = Path.GetFileName(dirs[i]);
-                        _VIEWS.Add(new oView()
-                        {
-                            Domain = domain,
-                            Name = file.Substring(0, file.Length - 5),
-                            Html = File.ReadAllText(dirs[i])
-                        });
-                    }
-                }
+                ___cache(domain, root);
 
                 text = JsonConvert.SerializeObject(new
                 {

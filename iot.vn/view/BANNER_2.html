@@ -1,0 +1,20 @@
+﻿
+    <div class="product_banner">
+
+        {{#each articles  ^ ImageBanner != null && ImageBanner.Length > 0 && Tags != null && string.Join(";", Tags).IndexOf("banner_2") != -1 $2 }}
+
+        <div class="first_banner first_banner{{#index1}}">
+            <div class="product_img{{#index1}}">
+                <a href="../{{Key}}" title="pbanner"><img class="prd_image{{#index1}}" src="{{ImageBanner}}" alt="{{Title}}"></a>
+            </div>
+            <div class="innercms1text innercms1text{{#index1}}">
+                <!--<span class="smalltext smalltext1">Sale 20% Off</span>
+            <span class="headingcms1 headingcms11">Orange Fresh Juice</span>-->
+            </div>
+        </div>
+        
+         
+        {{/each}}
+
+
+    </div>

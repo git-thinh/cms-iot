@@ -1,5 +1,5 @@
 Ống hút
-menu_main;banner;hot;product
+menu_main;slide;hot;product
 Ống hút cỏ bàng
 
 3000

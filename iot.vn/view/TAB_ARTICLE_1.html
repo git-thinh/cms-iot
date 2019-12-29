@@ -1,0 +1,38 @@
+﻿
+<div class="tab-head">
+    <div class="hometab-heading box-heading">Sản phẩm</div>
+    <div id="tabs" class="htabs">
+    </div>
+</div>
+<div id="tab-latest" class="tab-content">
+    <div class="box">
+        <div class="box-content">
+            <div class="customNavigation">
+                <a class="fa prev fa-arrow-left">&nbsp;</a>
+                <a class="fa next fa-arrow-right">&nbsp;</a>
+            </div>
+            <div class="box-product product-carousel" id="tablatest-carousel">
+                {{#each articles  ^ Tags != null && string.Join(";", Tags).IndexOf("product") != -1 }}
+                <div class="slider-item">
+                    <div class="product-block product-thumb transition">
+                        <div class="product-block-inner">
+                            <div class="image">
+                                <a href="../{{Key}}">
+                                    <img src="{{ImageThumb}}" title="{{ImageThumb}}" alt="{{Title}}" class="img-responsive reg-image" />
+                                    <img class="img-responsive hover-image" src="{{ImageThumb}}" title="{{Title}}" alt="{{Title}}" />
+                                </a>
+                            </div>
+                            <div class="product-details">
+                                <div class="caption">
+                                    <h4><a href="../{{Key}}">{{Title}}</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <span class="tablatest_default_width" style="display:none; visibility:hidden"></span>
+</div>

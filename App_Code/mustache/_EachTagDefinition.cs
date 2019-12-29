@@ -69,9 +69,19 @@ namespace Mustache
                 {
                     if (value.GetType().Name.Contains("oArticle[]"))
                     {
+                        string where = condition.Split('$')[0].Trim();
+                        string take = "";
+                        int limit = 0;
+                        if (condition.Contains('$')) take = condition.Split('$')[1].Trim();
+                        if (!string.IsNullOrEmpty(take)) 
+                            int.TryParse(take, out limit);
+
                         var a = value as oArticle[];
-                        var a1 = a.AsQueryable().Where(condition);
+                        var a1 = a.AsQueryable().Where(where);
                         var a2 = a1.Cast<oArticle>().ToArray();
+                        if (limit > a2.Length && limit > 0) 
+                            a2 = a2.Take(limit).ToArray(); 
+
                         enumerable = a2 as IEnumerable;
                     }
                 }
